@@ -1,6 +1,6 @@
 ## INICIO
 
-```
+```typescript
 import * as React from 'react';
 import MainContext from 'MainContext';
 import API from 'utils/api';
