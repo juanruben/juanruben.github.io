@@ -1,7 +1,25 @@
 ## INICIO
 
 ```
-  const a = 3;
+import * as React from 'react';
+import MainContext from 'MainContext';
+import API from 'utils/api';
+import { useQuery } from 'react-query';
+
+export default function useClients() {
+    const { allClients, setAllClients } = React.useContext(MainContext);
+
+    const loadData = async () => {
+        if (!allClients) {
+            const response = await API.getCompanyClients();
+            setAllClients(response.data);
+            return response.data;
+        }
+        return allClients;
+    };
+
+    return useQuery('allClients', loadData);
+}
 ```
 
 * hola
